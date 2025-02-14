@@ -37,7 +37,7 @@ public class BasicAttackMagician : MonoBehaviour
     {
         for (int i = count; i > 0; i--)
         {
-            Instantiate(card, transform.position,transform.rotation);
+            Instantiate(card, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
 
             yield return new WaitForSeconds(0.3f);
         }
