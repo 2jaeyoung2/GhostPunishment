@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttack : MonoBehaviour
+public class BasicAttackMagician : MonoBehaviour
 {
     [SerializeField]
     private GameObject card;
 
+    [SerializeField]
     private float cooltime;
 
-    private int CardNumber { get; set; }
+    [SerializeField]
+    [Range(3, 6)]
+    private int cardNumber;
 
     private void Start()
     {
         cooltime = 3f;
 
-        CardNumber = 3;
+        cardNumber = 3;
     }
 
     void Update()
@@ -24,7 +27,7 @@ public class BasicAttack : MonoBehaviour
 
         if (cooltime <= 0f)
         {
-            StartCoroutine(ThroughCards(CardNumber));
+            StartCoroutine(ThroughCards(cardNumber));
 
             cooltime = 3f;
         }
