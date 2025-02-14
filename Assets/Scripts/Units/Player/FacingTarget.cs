@@ -12,7 +12,7 @@ public class FacingTarget : MonoBehaviour
     Ray ray;
     public static RaycastHit info;
 
-    private void Update()
+    private void FixedUpdate()
     {
         RotateToCursor();
     }
