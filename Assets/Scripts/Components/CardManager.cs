@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    private int damage;
+    private float damage;
 
     void Start()
     {
-        
+        damage = 10f;
     }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            //other.GetComponent<IDamageable>()?.GetDamage(damage);
+            other.GetComponent<IDamageable>()?.GetDamage(damage);
 
             Destroy(gameObject);
         }

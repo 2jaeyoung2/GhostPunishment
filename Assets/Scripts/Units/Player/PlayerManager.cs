@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour, IDamageable
 {
+    [SerializeField]
+    private float playerHP;
 
     void Start()
     {
-        
+        playerHP = 100f;
     }
 
-    void Update()
+    public void GetDamage(float damage)
     {
-        
-    }
-    public void GetDamage(int damage)
-    {
-
+        playerHP -= damage;
     }
 }
