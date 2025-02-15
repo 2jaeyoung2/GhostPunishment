@@ -10,6 +10,7 @@ public class CardManager : MonoBehaviour
     {
         damage = 10f;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))

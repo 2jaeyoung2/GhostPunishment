@@ -4,13 +4,49 @@ using UnityEngine;
 
 public abstract class EnemyManager : MonoBehaviour, IDamageable
 {
-    protected float EnemyHP;
+    [SerializeField]
+    protected GameObject playerToChase;
+
+    [SerializeField]
+    protected float enemyHP;
+
+    public virtual float EnemyHP
+    {
+        get
+        {
+            return enemyHP;
+        }
+        set
+        {
+            enemyHP = value;
+        }
+    }
 
     protected float moveSpeed;
 
-    public abstract void Start();
+    protected abstract void Start();
 
-    public abstract void Update();
+    //protected abstract void Update(); // 이동 구현 할 때 사용
 
-    public abstract void GetDamage(float damage);
+    protected void FixedUpdate()
+    {
+        FaceToPlayer(playerToChase);
+    }
+
+    protected void FaceToPlayer(GameObject player)
+    {
+        transform.LookAt(player.transform.position);
+    }
+
+    public virtual void GetDamage(float damage)
+    {
+        if (enemyHP > 0)
+        {
+            EnemyHP -= damage;
+        }
+        else
+        {
+            Debug.Log("Dead");
+        }
+    }
 }
