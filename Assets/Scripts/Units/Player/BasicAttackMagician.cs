@@ -14,10 +14,6 @@ public class BasicAttackMagician : MonoBehaviour
     [Range(3, 6)]
     private int cardNumber;
 
-    [SerializeField]
-    [Range(2f, 10f)]
-    private float moveSpeed;
-
     private void Start()
     {
         cooltime = 3f;
@@ -42,8 +38,7 @@ public class BasicAttackMagician : MonoBehaviour
         for (int i = count; i > 0; i--)
         {
             Instantiate(card, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
-            card.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            Destroy(card, 4f);
+
             yield return new WaitForSeconds(0.3f);
         }
     }
