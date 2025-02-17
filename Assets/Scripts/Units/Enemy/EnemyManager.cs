@@ -26,7 +26,7 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
 
     protected abstract void Start();
 
-    //protected abstract void Update(); // 이동 구현 할 때 사용
+    protected abstract void Update();
 
     protected void FixedUpdate()
     {

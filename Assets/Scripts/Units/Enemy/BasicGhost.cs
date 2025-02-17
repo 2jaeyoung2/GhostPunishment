@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Basic_Ghost : EnemyManager
+public class BasicGhost : EnemyManager
 {
     public override float EnemyHP
     {
@@ -22,8 +22,8 @@ public class Basic_Ghost : EnemyManager
     }
 
 
-    //protected override void Update()
-    //{
-
-    //}
+    protected override void Update()
+    {
+        // 이동 로직
+    }
 }

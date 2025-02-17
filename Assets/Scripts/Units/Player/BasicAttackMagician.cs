@@ -10,6 +10,8 @@ public class BasicAttackMagician : MonoBehaviour
     [SerializeField]
     private float cooltime;
 
+    private float tempCoolTime;
+
     [SerializeField]
     [Range(3, 6)]
     private int cardNumber;
@@ -18,18 +20,20 @@ public class BasicAttackMagician : MonoBehaviour
     {
         cooltime = 3f;
 
+        tempCoolTime = cooltime;
+
         cardNumber = 3;
     }
 
     void Update()
     {
-        cooltime -= Time.deltaTime;
+        tempCoolTime -= Time.deltaTime;
 
-        if (cooltime <= 0f)
+        if (tempCoolTime <= 0f)
         {
             StartCoroutine(ThroughCards(cardNumber));
 
-            cooltime = 3f;
+            tempCoolTime = cooltime;
         }
     }
 
