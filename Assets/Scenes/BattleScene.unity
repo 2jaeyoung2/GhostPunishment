@@ -1324,6 +1324,7 @@ MonoBehaviour:
   card: {fileID: 2480799855926884827, guid: 6aa72c49b9d7f0b4d9233d46464df1b8, type: 3}
   cooltime: 0
   cardNumber: 0
+  moveSpeed: 0
 --- !u!114 &752137480
 MonoBehaviour:
   m_ObjectHideFlags: 0
