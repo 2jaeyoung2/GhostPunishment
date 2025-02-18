@@ -21,6 +21,7 @@ public class BasicGhostAttackMove : MonoBehaviour
     void BooMove()
     {
         gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        Destroy(gameObject, 1f);
+
+        Destroy(gameObject, 2f);
     }
 }
