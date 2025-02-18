@@ -17,7 +17,9 @@ public class BasicAttackWarrior : MonoBehaviour
     void Start()
     {
         cooltime = 3f;
+
         rotateSpeed = 720f;
+
         duration = 0.5f;
     }
 
@@ -28,6 +30,7 @@ public class BasicAttackWarrior : MonoBehaviour
         if (cooltime <= 0)
         {
             SweepSword();
+
             cooltime = 2f;
         }
     }

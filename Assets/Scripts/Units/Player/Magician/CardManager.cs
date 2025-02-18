@@ -11,11 +11,11 @@ public class CardManager : MonoBehaviour
         damage = 10f;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<IDamageable>()?.GetDamage(damage);
+            collision.gameObject.GetComponent<IDamageable>()?.GetDamage(damage);
 
             Destroy(gameObject);
         }

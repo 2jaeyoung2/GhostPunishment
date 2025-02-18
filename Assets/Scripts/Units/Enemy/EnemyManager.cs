@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyState
+{
+    Follow, Attack
+}
+
 public abstract class EnemyManager : MonoBehaviour, IDamageable
 {
+    protected EnemyState enemyState;
+
     [SerializeField]
     protected GameObject playerToChase;
 
@@ -22,7 +29,20 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
         }
     }
 
+    [SerializeField]
     protected float moveSpeed;
+
+    protected virtual float MoveSpeed
+    {
+        get
+        {
+            return moveSpeed;
+        }
+        set
+        {
+            moveSpeed = value;
+        }
+    }
 
     protected abstract void Start();
 
@@ -33,18 +53,24 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
         FaceToPlayer(playerToChase);
     }
 
+
     protected void FaceToPlayer(GameObject player)
     {
         transform.LookAt(player.transform.position);
     }
 
+    protected abstract void Move();
+
     public virtual void GetDamage(float damage)
     {
         EnemyHP -= damage;
 
+        Debug.Log(EnemyHP);
+
         if (enemyHP <= 0)
         {
             Debug.Log("Dead");
+
             Die();
         }
     }

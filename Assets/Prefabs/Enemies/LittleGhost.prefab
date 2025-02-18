@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 8314079606927808219}
   - component: {fileID: 6361938957883235637}
   - component: {fileID: 908939186322299545}
+  - component: {fileID: 3181871806784136787}
   m_Layer: 0
   m_Name: LittleGhost
   m_TagString: Enemy
@@ -402,6 +403,23 @@ CapsuleCollider:
   m_Height: 0.73960495
   m_Direction: 1
   m_Center: {x: -0.0075883865, y: 0.33836842, z: 0.00768137}
+--- !u!114 &3181871806784136787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008691651723566265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c566d0315fa3f747b44503a92efaee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerToChase: {fileID: 0}
+  enemyHP: 0
+  moveSpeed: 0
+  basicGhostProjectile: {fileID: 5354059282610008555, guid: 81ce027c11725204ca50d86e2535c1f8, type: 3}
+  cooltime: 0
 --- !u!1 &5474847026593874188
 GameObject:
   m_ObjectHideFlags: 0

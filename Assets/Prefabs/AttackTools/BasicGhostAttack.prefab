@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3613421082684767022}
   - component: {fileID: 8716961244264894217}
+  - component: {fileID: 8642672420146819281}
   m_Layer: 0
   m_Name: BasicGhostAttack
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+--- !u!114 &8642672420146819281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625389718883163725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf799ae92849ad8479186e80fc181a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &3788282280006258240
 GameObject:
   m_ObjectHideFlags: 0
