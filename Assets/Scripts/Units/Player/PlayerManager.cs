@@ -15,5 +15,16 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public void GetDamage(float damage)
     {
         playerHP -= damage;
+
+        if (playerHP <= 0)
+        {
+            Debug.Log("Dead");
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
