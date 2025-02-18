@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicGhost : EnemyManager
 {
-    public override float EnemyHP
+    protected override float EnemyHP
     {
         get
         {
@@ -14,7 +14,7 @@ public class BasicGhost : EnemyManager
         {
             base.enemyHP = value;
         }
-    }
+    }    
 
     protected override void Start()
     {
@@ -25,5 +25,10 @@ public class BasicGhost : EnemyManager
     protected override void Update()
     {
         // 이동 로직
+    }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
     }
 }

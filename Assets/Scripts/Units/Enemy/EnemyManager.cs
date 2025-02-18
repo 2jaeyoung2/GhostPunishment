@@ -10,7 +10,7 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
     [SerializeField]
     protected float enemyHP;
 
-    public virtual float EnemyHP
+    protected virtual float EnemyHP
     {
         get
         {
@@ -40,13 +40,14 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
 
     public virtual void GetDamage(float damage)
     {
-        if (enemyHP > 0)
-        {
-            EnemyHP -= damage;
-        }
-        else
+        EnemyHP -= damage;
+
+        if (enemyHP <= 0)
         {
             Debug.Log("Dead");
+            Die();
         }
     }
+
+    public abstract void Die();
 }
