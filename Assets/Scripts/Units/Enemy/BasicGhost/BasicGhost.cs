@@ -16,11 +16,16 @@ public class BasicGhost : EnemyManager
 
     private float tempCoolTime;
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 1.5f);
+    }
+
     protected override void Start()
     {
         EnemyHP = 30f;
 
-        MoveSpeed = 0.3f;
+        MoveSpeed = 0f;
 
         cooltime = 2.6f;
 
@@ -75,8 +80,6 @@ public class BasicGhost : EnemyManager
         if (tempCoolTime <= 0)
         {
             Instantiate(basicGhostProjectile, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-
-            Debug.Log("boo");
 
             tempCoolTime = cooltime;
         }

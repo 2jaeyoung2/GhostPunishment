@@ -21,8 +21,6 @@ public class PlayerManager : MonoBehaviour, IDamageable, IScoreable
     {
         playerHP -= damage;
 
-        Debug.Log("- " + damage);
-
         if (playerHP <= 0)
         {
             Debug.Log("Dead");
