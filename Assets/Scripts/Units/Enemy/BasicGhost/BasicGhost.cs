@@ -65,7 +65,6 @@ public class BasicGhost : EnemyManager
 
     protected override void Move()
     {
-        // 이동 로직
         transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
     }
 
@@ -85,6 +84,13 @@ public class BasicGhost : EnemyManager
 
     public override void Die()
     {
+        DropEXP();
+
         Destroy(gameObject);
+    }
+
+    public override void DropEXP()
+    {
+        Instantiate(gemToDrop, transform.position, transform.rotation);
     }
 }

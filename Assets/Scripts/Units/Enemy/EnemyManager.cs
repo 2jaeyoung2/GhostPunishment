@@ -15,6 +15,9 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
     protected GameObject playerToChase;
 
     [SerializeField]
+    protected GameObject gemToDrop;
+
+    [SerializeField]
     protected float enemyHP;
 
     protected virtual float EnemyHP
@@ -76,4 +79,6 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
     }
 
     public abstract void Die();
+
+    public abstract void DropEXP();
 }
