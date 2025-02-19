@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6765748189244344375}
   - component: {fileID: 1344590746806368718}
   - component: {fileID: 3081471355130550632}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Card_Normal
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4473293307563755544}
   - component: {fileID: 1196156807477595329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Card_Rotate
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 5498426446921154158}
   - component: {fileID: 771358093660848098}
   - component: {fileID: 5880439042041997876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 8943768202303889004}
   - component: {fileID: 4428823926819624829}
   - component: {fileID: 823114269824108462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Card_Normal_Render
   m_TagString: Weapon
   m_Icon: {fileID: 0}

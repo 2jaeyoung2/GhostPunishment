@@ -10,11 +10,15 @@ public class GemManager : MonoBehaviour
 
     private float experiencePoint = 1.5f;
 
-    private float moveSpeed = 3.5f;
+    private float moveSpeed = 3f;
+
+    private int playerLayer;
 
     private void Start()
     {
         hoverAnimation = gameObject.GetComponent<Animator>();
+
+        playerLayer = LayerMask.GetMask("PLAYER");
     }
 
     private void OnTriggerStay(Collider other)
@@ -22,7 +26,15 @@ public class GemManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             transform.LookAt(other.transform);
+
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
+            if (Physics.CheckSphere(transform.position, 0.08f, playerLayer))
+            {
+                other.GetComponent<IScoreable>()?.GetExp(experiencePoint);
+
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -32,16 +44,5 @@ public class GemManager : MonoBehaviour
         {
             hoverAnimation.enabled = false;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<IScoreable>()?.GetExp(experiencePoint);
-
-            Destroy(gameObject);
-        }
-
     }
 }
