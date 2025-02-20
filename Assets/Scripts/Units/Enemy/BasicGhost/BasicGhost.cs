@@ -16,13 +16,15 @@ public class BasicGhost : EnemyManager
 
     private float tempCoolTime;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // Gizmos
     {
         Gizmos.DrawWireSphere(transform.position, 1.5f);
     }
 
     protected override void Start()
     {
+        playerToChase = GameObject.FindWithTag("Player");
+
         EnemyHP = 30f;
 
         MoveSpeed = 1.4f;

@@ -11,7 +11,7 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
 {
     protected EnemyState enemyState;
 
-    [SerializeField]
+    //[SerializeField]
     protected GameObject playerToChase;
 
     [SerializeField]
