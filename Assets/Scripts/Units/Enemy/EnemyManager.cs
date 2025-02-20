@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,6 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
 {
     protected EnemyState enemyState;
 
-    //[SerializeField]
     protected GameObject playerToChase;
 
     [SerializeField]
@@ -46,8 +45,8 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
             moveSpeed = value;
         }
     }
-
-    protected abstract void Start();
+    
+    protected abstract void Start(); // playerToChase = GameObject.FindWithTag("Player"); 필수 작성
 
     protected abstract void Update();
 
