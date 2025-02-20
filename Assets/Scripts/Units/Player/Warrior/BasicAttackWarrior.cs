@@ -14,6 +14,8 @@ public class BasicAttackWarrior : MonoBehaviour
 
     private float duration;
 
+    GameObject tempSword;
+
     void Start()
     {
         cooltime = 3f;
@@ -21,6 +23,10 @@ public class BasicAttackWarrior : MonoBehaviour
         rotateSpeed = 720f;
 
         duration = 0.5f;
+
+        tempSword = Instantiate(sword, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
+
+        tempSword.SetActive(false);
     }
 
     void Update()
@@ -37,7 +43,7 @@ public class BasicAttackWarrior : MonoBehaviour
 
     void SweepSword()
     {
-        GameObject tempSword = Instantiate(sword, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
+        tempSword.SetActive(true);
 
         tempSword.transform.SetParent(transform);
 
@@ -65,6 +71,6 @@ public class BasicAttackWarrior : MonoBehaviour
             yield return null;
         }
 
-        Destroy(swordObj, 0.1f);
+        tempSword.SetActive(false);
     }
 }
