@@ -16,10 +16,10 @@ public class BasicGhost : EnemyManager
 
     private float tempCoolTime;
 
-    private void OnDrawGizmos() // Gizmos
-    {
-        Gizmos.DrawWireSphere(transform.position, 1.5f);
-    }
+    //private void OnDrawGizmos() // Gizmos
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, 1.5f);
+    //}
 
     protected override void Start()
     {
