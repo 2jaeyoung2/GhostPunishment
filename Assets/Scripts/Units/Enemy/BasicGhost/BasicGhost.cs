@@ -25,7 +25,7 @@ public class BasicGhost : EnemyManager
     {
         EnemyHP = 30f;
 
-        MoveSpeed = 0f;
+        MoveSpeed = 1.4f;
 
         cooltime = 2.6f;
 
