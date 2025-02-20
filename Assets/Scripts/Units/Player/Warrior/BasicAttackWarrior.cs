@@ -44,9 +44,10 @@ public class BasicAttackWarrior : MonoBehaviour
         StartCoroutine(RotateSword(tempSword));
     }
 
-    IEnumerator RotateSword(GameObject swordObj) // 회전 로직 나중에 다시 수정
+    IEnumerator RotateSword(GameObject swordObj) // TODO: 회전 로직 나중에 다시 수정
     {
         // rotateSpeed * duration = 360 가 되어야 함.
+
         rotateSpeed = 1440f;
 
         duration = 0.25f;
