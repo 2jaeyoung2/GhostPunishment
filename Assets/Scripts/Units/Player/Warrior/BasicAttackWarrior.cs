@@ -43,6 +43,8 @@ public class BasicAttackWarrior : MonoBehaviour
 
     void SweepSword()
     {
+        tempSword.transform.position = transform.position + new Vector3(0, 0.2f, 0);
+
         tempSword.SetActive(true);
 
         tempSword.transform.SetParent(transform);
