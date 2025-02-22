@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
-    Vector3 moveDir;
+    private Vector3 moveDir;
+
+    private Vector3 tempPosition;
 
     private void Start()
     {
@@ -22,9 +24,34 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveDir != Vector3.zero) // 키 입력이 있으면 실행.
         {
-            // transform.Translate(moveDir * moveSpeed * Time.deltaTime, Space.World);
-            Vector3 move = new Vector3(moveDir.x, 0, moveDir.z) * moveSpeed;
-            rb.velocity = new Vector3(move.x, 0, move.z);
+            // TODO: 끊기는거 수정
+            if (gameObject.transform.position.x <= 10 && gameObject.transform.position.x >= -10 && gameObject.transform.position.z <= 10 && gameObject.transform.position.z >= -10)
+            {
+                Vector3 move = new Vector3(moveDir.x, 0, moveDir.z) * moveSpeed; // transform.Translate(moveDir * moveSpeed * Time.deltaTime, Space.World);
+
+                rb.velocity = new Vector3(move.x, 0, move.z);
+
+                tempPosition = gameObject.transform.position;
+            }
+            else
+            {
+                gameObject.transform.position = tempPosition;
+            }
+        }
+    }
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        if (ctx.phase == InputActionPhase.Performed)
+        {
+            Vector2 direction = ctx.ReadValue<Vector2>();
+
+            moveDir = new Vector3(direction.x, 0, direction.y);
+        }
+        else if (ctx.phase == InputActionPhase.Canceled)
+        {
+            moveDir = Vector3.zero;
+
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -34,19 +61,4 @@ public class PlayerMovement : MonoBehaviour
     //    moveDir = new Vector3(direction.x, 0, direction.y);
     //    Debug.Log("Move Direction: " + moveDir);
     //}
-
-    public void OnMove(InputAction.CallbackContext ctx)
-    {
-        if (ctx.phase == InputActionPhase.Performed)
-        {
-            Vector2 direction = ctx.ReadValue<Vector2>();
-            moveDir = new Vector3(direction.x, 0, direction.y);
-        }
-        else if (ctx.phase == InputActionPhase.Canceled)
-        {
-            moveDir = Vector3.zero;
-            rb.velocity = Vector3.zero;
-        }
-        
-    }
 }
