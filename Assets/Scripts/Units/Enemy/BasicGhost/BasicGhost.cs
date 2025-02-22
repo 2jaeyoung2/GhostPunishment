@@ -23,8 +23,6 @@ public class BasicGhost : EnemyManager
 
     protected override void Start()
     {
-        playerToChase = GameObject.FindWithTag("Player");
-
         EnemyHP = 30f;
 
         MoveSpeed = 0.8f;

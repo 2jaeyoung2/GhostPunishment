@@ -45,7 +45,12 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
             moveSpeed = value;
         }
     }
-    
+
+    protected void Awake()
+    {
+        playerToChase = GameObject.FindWithTag("Player");
+    }
+
     protected abstract void Start(); // playerToChase = GameObject.FindWithTag("Player"); 필수 작성
 
     protected abstract void Update();

@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardRotationInPlace : MonoBehaviour
+public class ShieldRotation : MonoBehaviour
 {
-    [SerializeField]
-    [Range(100f, 1000f)]
     private float rotateSpeed;
 
     private void Start()
     {
-        rotateSpeed = 800f;
+        rotateSpeed = 600f;
     }
 
     void Update()
