@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 for (int i = 0; i < numberToSpawn; i++)
                 {
-                    Instantiate(enemy[0], placeToSpawnEnemy.position + new Vector3(Random.Range(-20f, 20f), 0, 0), transform.rotation);
+                    Instantiate(enemy[0], placeToSpawnEnemy.position + new Vector3(Random.Range(-20f, 20f), 0, 0), transform.rotation); // TODO: Get으로 바꾸기
                 }
             }
 

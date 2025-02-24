@@ -89,7 +89,7 @@ public class BasicGhost : EnemyManager
     {
         DropEXP();
 
-        Destroy(gameObject);
+        Destroy(gameObject); // TODO: Return으로 바꾸기
     }
 
     public override void DropEXP()
