@@ -31,13 +31,13 @@ public class BasicAttackMagician : MonoBehaviour
 
         if (tempCoolTime <= 0f)
         {
-            StartCoroutine(ThroughCards(cardNumber));
+            StartCoroutine(ThrowCards(cardNumber));
 
             tempCoolTime = cooltime;
         }
     }
 
-    IEnumerator ThroughCards(int count)
+    IEnumerator ThrowCards(int count)
     {
         for (int i = 0; i < count; i++) 
         {
