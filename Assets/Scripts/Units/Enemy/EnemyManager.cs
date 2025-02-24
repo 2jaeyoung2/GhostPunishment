@@ -72,7 +72,7 @@ public abstract class EnemyManager : MonoBehaviour, IDamageable
     {
         EnemyHP -= damage;
 
-        Debug.Log(EnemyHP);
+        //Debug.Log(EnemyHP);
 
         if (enemyHP <= 0)
         {

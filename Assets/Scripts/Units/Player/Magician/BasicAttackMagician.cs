@@ -20,7 +20,7 @@ public class BasicAttackMagician : MonoBehaviour
     {
         cooltime = 3f;
 
-        tempCoolTime = cooltime;
+        tempCoolTime = cooltime / 2;
 
         cardNumber = 3;
     }
@@ -39,9 +39,11 @@ public class BasicAttackMagician : MonoBehaviour
 
     IEnumerator ThroughCards(int count)
     {
-        for (int i = count; i > 0; i--)
+        for (int i = 0; i < count; i++) 
         {
-            Instantiate(card, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
+            var card = CardPoolManager.GetCard();
+
+            card.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
 
             yield return new WaitForSeconds(0.2f);
         }
