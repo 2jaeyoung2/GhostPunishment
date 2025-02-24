@@ -12,14 +12,17 @@ public class Card : MonoBehaviour
 
     private float duration;
 
-    private void Start()
+    private void Awake()
     {
         moveSpeed = 5f;
 
         damage = 10f;
 
         duration = 3f;
+    }
 
+    private void OnEnable()
+    {
         StartCoroutine(CardMove());
     }
 
@@ -39,7 +42,7 @@ public class Card : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
 
-        CardPoolManager.ReturnCard(this);
+        CardPoolManager.Instance.ReturnCard(this);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,7 +51,7 @@ public class Card : MonoBehaviour
         {
             collision.gameObject.GetComponent<IDamageable>()?.GetDamage(damage);
 
-            CardPoolManager.ReturnCard(this);
+            CardPoolManager.Instance.ReturnCard(this);
         }
     }
 }

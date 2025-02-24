@@ -15,8 +15,6 @@ public class CardPoolManager : MonoBehaviour
 
     Queue<Card> cardQueue = new Queue<Card>();
 
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -56,13 +54,15 @@ public class CardPoolManager : MonoBehaviour
         return newCard;
     }
 
-    public static Card GetCard()
+    public Card GetCard()
     {
         if (Instance.cardQueue.Count > 0)
         {
             var card = Instance.cardQueue.Dequeue();
 
             card.transform.SetParent(null);
+
+            card.transform.rotation = player.rotation;
 
             card.gameObject.SetActive(true);
 
@@ -72,6 +72,8 @@ public class CardPoolManager : MonoBehaviour
         {
             var newCard = Instance.CreateNewCard();
 
+            newCard.transform.rotation = player.rotation;
+
             newCard.gameObject.SetActive(true);
 
             newCard.transform.SetParent(null);
@@ -80,7 +82,7 @@ public class CardPoolManager : MonoBehaviour
         }
     }
 
-    public static void ReturnCard(Card card)
+    public void ReturnCard(Card card)
     {
         card.gameObject.SetActive(false);
 

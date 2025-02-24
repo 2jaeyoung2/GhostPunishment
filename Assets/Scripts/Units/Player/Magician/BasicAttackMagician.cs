@@ -41,7 +41,7 @@ public class BasicAttackMagician : MonoBehaviour
     {
         for (int i = 0; i < count; i++) 
         {
-            var card = CardPoolManager.GetCard();
+            var card = CardPoolManager.Instance.GetCard();
 
             card.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
 
