@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class StaticUI : MonoBehaviour
 {
     [SerializeField]
     private Player player;
@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI expText;
+
+    // TODO: 중앙 상단에 시간
 
     private void Start()
     {

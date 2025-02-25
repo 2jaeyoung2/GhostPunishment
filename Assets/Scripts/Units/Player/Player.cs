@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, IDamageable, IScoreable
 
         currentPlayerEXP = 0f;
 
-        //OnHealthChanged?.Invoke(currentHP, playerMaxHP);
+        OnHealthChanged?.Invoke(currentHP, playerMaxHP);
 
         OnEXPChanged?.Invoke(currentPlayerEXP, RequiredExp(level));
     }
@@ -68,6 +68,7 @@ public class Player : MonoBehaviour, IDamageable, IScoreable
     public float RequiredExp(int level)
     {
         if (level == 1) return 10f;
+
         if (level == 2) return 25f;
 
         return RequiredExp(level - 1) + RequiredExp(level - 2);
