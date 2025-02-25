@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicGhost : EnemyManager
+public class BasicGhost : Enemy
 {
     protected override float EnemyHP { get => base.EnemyHP; set => base.EnemyHP = value; }
 
@@ -89,7 +89,7 @@ public class BasicGhost : EnemyManager
     {
         DropEXP();
 
-        Destroy(gameObject); // TODO: Return으로 바꾸기
+        EnemyPoolManger.Instance.ReturnEnemy(this);
     }
 
     public override void DropEXP()

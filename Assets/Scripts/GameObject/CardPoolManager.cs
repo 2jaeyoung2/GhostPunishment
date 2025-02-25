@@ -13,13 +13,14 @@ public class CardPoolManager : MonoBehaviour
     [SerializeField]
     private GameObject card;
 
-    Queue<Card> cardQueue = new Queue<Card>();
+    private Queue<Card> cardQueue = new Queue<Card>();
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -28,11 +29,6 @@ public class CardPoolManager : MonoBehaviour
         }
 
         Initialize(10);
-    }
-
-    private void Update()
-    {
-        transform.rotation = player.rotation;
     }
 
     private void Initialize(int size)

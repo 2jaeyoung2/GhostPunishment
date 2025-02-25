@@ -5,9 +5,6 @@ using UnityEngine;
 public class BasicAttackMagician : MonoBehaviour
 {
     [SerializeField]
-    private GameObject card;
-
-    [SerializeField]
     private float cooltime;
 
     private float tempCoolTime;

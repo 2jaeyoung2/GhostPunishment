@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     [Range(2f, 10f)]
     private float moveSpeed;
 
+    [SerializeField]
     private float damage;
 
     private float duration;
