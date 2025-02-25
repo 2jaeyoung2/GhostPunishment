@@ -16,7 +16,6 @@ public class ShieldManager : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<IDamageable>()?.GetDamage(damage);
-            Debug.Log(damage);
         }
     }
 }

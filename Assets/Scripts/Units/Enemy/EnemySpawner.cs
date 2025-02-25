@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 var enemy = EnemyPoolManger.Instance.GetEnemy();
 
-                enemy.transform.position = placeToSpawnEnemy.position + new Vector3(Random.Range(-20f, 20f), 0, 0);
+                enemy.transform.position = placeToSpawnEnemy.position + new Vector3(Random.Range(-5f, 5f), 0, 0);
             }
 
             tempCoolTime = coolTimeToSpawn;
