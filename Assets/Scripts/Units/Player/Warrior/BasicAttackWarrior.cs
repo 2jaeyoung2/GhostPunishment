@@ -14,15 +14,13 @@ public class BasicAttackWarrior : MonoBehaviour
 
     private float duration;
 
-    GameObject tempSword;
+    private GameObject tempSword;
 
     void Start()
     {
         cooltime = 3f;
 
         rotateSpeed = 720f;
-
-        duration = 0.5f;
 
         tempSword = Instantiate(sword, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
 
@@ -62,11 +60,9 @@ public class BasicAttackWarrior : MonoBehaviour
 
         float timeElapsed = 0f;
 
-        while (timeElapsed < duration)
+        while (timeElapsed <= duration)
         {
-            float step = rotateSpeed * Time.deltaTime;
-
-            swordObj.transform.Rotate(Vector3.up, step);  // Y축을 기준으로 회전
+            swordObj.transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
 
             timeElapsed += Time.deltaTime;
 
