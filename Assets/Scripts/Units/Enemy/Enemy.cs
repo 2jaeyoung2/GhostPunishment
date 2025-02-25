@@ -72,12 +72,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         EnemyHP -= damage;
 
-        //Debug.Log(EnemyHP);
-
         if (enemyHP <= 0)
         {
-            Debug.Log("Dead");
-
             Die();
         }
     }

@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
 
         if (expText != null)
         {
-            healthText.text = $"{currentPlayerExp} / {maxExp}";
+            expText.text = $"{currentPlayerExp} / {maxExp}";
         }
     }
 
@@ -63,6 +63,4 @@ public class UIManager : MonoBehaviour
 
         player.OnEXPChanged -= UpdateExpBar;
     }
-
-
 }

@@ -8,7 +8,7 @@ public class SwordManager : MonoBehaviour
 
     private void Start()
     {
-        damage = 1f;
+        damage = 20f;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,7 +16,6 @@ public class SwordManager : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<IDamageable>()?.GetDamage(damage);
-            Debug.Log(damage);
         }
     }
 }
