@@ -7,9 +7,11 @@ using static UnityEditor.PlayerSettings;
 public class FacingTarget : MonoBehaviour
 {
     bool isRayOn;
+
     float distance;
 
     Ray ray;
+
     public static RaycastHit info;
 
     private void FixedUpdate()
@@ -20,6 +22,7 @@ public class FacingTarget : MonoBehaviour
     void RotateToCursor()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         Debug.DrawRay(ray.origin, ray.direction * 10, Color.black);
 
         int floorLayerMask = LayerMask.GetMask("FLOOR");
