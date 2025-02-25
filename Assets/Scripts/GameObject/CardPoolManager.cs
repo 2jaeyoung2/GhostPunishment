@@ -28,7 +28,7 @@ public class CardPoolManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Initialize(10);
+        Initialize(18);
     }
 
     private void Initialize(int size)

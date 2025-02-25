@@ -13,6 +13,8 @@ public class Card : MonoBehaviour
 
     private float duration;
 
+    private float elapsedTime;
+
     private void Awake()
     {
         moveSpeed = 5f;
@@ -24,24 +26,21 @@ public class Card : MonoBehaviour
 
     private void OnEnable()
     {
+        elapsedTime = 0;
+
         StartCoroutine(CardMove());
     }
 
     IEnumerator CardMove()
     {
-        while (duration - Time.deltaTime > 0)
+        while (duration - elapsedTime > 0)
         {
+            elapsedTime += Time.deltaTime;
+
             gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 
             yield return null;
-
-            StartCoroutine(ClearCard());
         }
-    }
-
-    IEnumerator ClearCard()
-    {
-        yield return new WaitForSeconds(4f);
 
         CardPoolManager.Instance.ReturnCard(this);
     }
