@@ -47,7 +47,7 @@ public class BasicAttackWarrior : MonoBehaviour
 
         tempSword.SetActive(true);
 
-        tempSword.transform.SetParent(transform);
+        tempSword.transform.SetParent(null);
 
         StartCoroutine(RotateSword(tempSword));
     }
