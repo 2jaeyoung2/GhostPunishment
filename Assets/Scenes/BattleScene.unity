@@ -519,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c675e3824085d428ecd49f264b671b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 2588828022110835162, guid: ca782a709af666344b496a0730876544, type: 3}
 --- !u!4 &1017192720
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1997440375
 Transform:
   m_ObjectHideFlags: 0
@@ -712,8 +713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeToSpawnEnemy: {fileID: 234614817}
-  enemy:
-  - {fileID: 2588828022110835162, guid: ca782a709af666344b496a0730876544, type: 3}
 --- !u!1 &2072505781
 GameObject:
   m_ObjectHideFlags: 0
@@ -33397,7 +33396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5643b360a009d94ea9618c2ff0eaafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 2480799855926884827, guid: 6aa72c49b9d7f0b4d9233d46464df1b8, type: 3}
   cooltime: 0
   cardNumber: 0
 --- !u!33 &7219908210275331837
@@ -43742,7 +43740,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939822052502086158}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fe902dd1e33faa439a2dd494aa12000, type: 3}
   m_Name: 
@@ -43881,7 +43879,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939822052502086158}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1cbf236a4940bc4cab5203b341dcb2b, type: 3}
   m_Name: 

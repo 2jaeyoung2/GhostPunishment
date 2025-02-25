@@ -7,9 +7,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform placeToSpawnEnemy;
 
-    [SerializeField]
-    private GameObject[] enemy;
-
     private int numberToSpawn;
 
     private float coolTimeToSpawn;
@@ -33,12 +30,11 @@ public class EnemySpawner : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(-180f, 180f), 0));
 
-            if (enemy.Length > 0 && placeToSpawnEnemy != null)
+            for (int i = 0; i < numberToSpawn; i++)
             {
-                for (int i = 0; i < numberToSpawn; i++)
-                {
-                    Instantiate(enemy[0], placeToSpawnEnemy.position + new Vector3(Random.Range(-20f, 20f), 0, 0), transform.rotation); // TODO: Get으로 바꾸기
-                }
+                var enemy = EnemyPoolManger.Instance.GetEnemy();
+
+                enemy.transform.position = placeToSpawnEnemy.position + new Vector3(Random.Range(-20f, 20f), 0, 0);
             }
 
             tempCoolTime = coolTimeToSpawn;

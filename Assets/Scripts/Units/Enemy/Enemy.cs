@@ -7,7 +7,7 @@ public enum EnemyState
     Follow, Attack
 }
 
-public abstract class EnemyManager : MonoBehaviour, IDamageable
+public abstract class Enemy : MonoBehaviour, IDamageable
 {
     protected EnemyState enemyState;
 
