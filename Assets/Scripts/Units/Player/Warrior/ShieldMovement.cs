@@ -12,8 +12,6 @@ public class ShieldMovement : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-
         moveSpeed = 5f;
     }
 
@@ -24,6 +22,13 @@ public class ShieldMovement : MonoBehaviour
 
     IEnumerator ShieldMoveForward()
     {
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
+
+        gameObject.transform.rotation = player.transform.rotation;
+
         while (Vector3.Distance(player.transform.position, gameObject.transform.position) < 6f)
         {
             gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);

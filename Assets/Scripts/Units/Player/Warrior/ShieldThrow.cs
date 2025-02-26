@@ -42,6 +42,8 @@ public class ShieldThrow : MonoBehaviour
 
     void ThrowShield()
     {
+        tempShield.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0.3f);
+
         tempShield.SetActive(true);
     }
 }
