@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShieldMovement : MonoBehaviour
@@ -14,7 +15,10 @@ public class ShieldMovement : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         moveSpeed = 5f;
+    }
 
+    private void OnEnable()
+    {
         StartCoroutine(ShieldMoveForward());
     }
 
@@ -41,6 +45,6 @@ public class ShieldMovement : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
