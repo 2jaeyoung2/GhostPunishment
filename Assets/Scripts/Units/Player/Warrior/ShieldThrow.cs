@@ -11,13 +11,13 @@ public class ShieldThrow : MonoBehaviour
     private GameObject shield;
 
     [SerializeField]
-    private float cooltime;
+    private float coolTime;
 
     private float tempCooltime;
 
     private void Start()
     {
-        cooltime = 6f;
+        coolTime = 6f;
 
         tempCooltime = 3f;
     }
@@ -30,7 +30,7 @@ public class ShieldThrow : MonoBehaviour
         {
             ThrowShield();
 
-            tempCooltime = cooltime;
+            tempCooltime = coolTime;
         }
     }
 

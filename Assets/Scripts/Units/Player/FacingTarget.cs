@@ -6,10 +6,6 @@ using static UnityEditor.PlayerSettings;
 
 public class FacingTarget : MonoBehaviour
 {
-    bool isRayOn;
-
-    float distance;
-
     Ray ray;
 
     public static RaycastHit info;

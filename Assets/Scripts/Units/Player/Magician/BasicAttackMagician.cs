@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicAttackMagician : MonoBehaviour
 {
     [SerializeField]
-    private float cooltime;
+    private float coolTime;
 
     private float tempCoolTime;
 
@@ -15,9 +15,9 @@ public class BasicAttackMagician : MonoBehaviour
 
     private void Start()
     {
-        cooltime = 3f;
+        coolTime = 3f;
 
-        tempCoolTime = cooltime / 2;
+        tempCoolTime = coolTime / 2;
 
         cardNumber = 3;
     }
@@ -30,7 +30,7 @@ public class BasicAttackMagician : MonoBehaviour
         {
             StartCoroutine(ThrowCards(cardNumber));
 
-            tempCoolTime = cooltime;
+            tempCoolTime = coolTime;
         }
     }
 
