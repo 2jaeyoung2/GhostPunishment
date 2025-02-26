@@ -30,13 +30,13 @@ public class ShieldThrow : MonoBehaviour
 
     private void Update()
     {
-        tempCooltime -= Time.deltaTime;
+        tempCooltime += Time.deltaTime;
 
-        if (tempCooltime <= 0)
+        if (tempCooltime >= coolTime)
         {
             ThrowShield();
 
-            tempCooltime = coolTime;
+            tempCooltime = 0;
         }
     }
 

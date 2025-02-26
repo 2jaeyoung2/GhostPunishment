@@ -46,5 +46,7 @@ public class ShieldMovement : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+
+        gameObject.transform.position = player.transform.position + new Vector3(0, 0.2f, 0.3f);
     }
 }
