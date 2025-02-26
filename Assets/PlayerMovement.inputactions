@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ActiveBombDrop",
+                    "type": "Value",
+                    "id": "4fc07f19-2b02-47b7-9f11-66d7e0f3a452",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "aff2f00c-86af-45d5-9ceb-cd999b805a14",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActiveBombDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

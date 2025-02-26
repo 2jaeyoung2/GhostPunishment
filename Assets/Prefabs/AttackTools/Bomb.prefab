@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7863307790150591896}
   - component: {fileID: 5450817807839346222}
   - component: {fileID: 5640908857924969676}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SideSparksEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4611,7 +4611,7 @@ GameObject:
   - component: {fileID: 4998905296180228399}
   - component: {fileID: 2367833734185462787}
   - component: {fileID: 6757429063560153648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparksEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9215,9 +9215,9 @@ GameObject:
   - component: {fileID: 6333314795720203690}
   - component: {fileID: 5705079606049349347}
   - component: {fileID: 2894350577944048818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9301,7 +9301,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 640
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -9347,7 +9347,7 @@ GameObject:
   - component: {fileID: 4588713724344371363}
   - component: {fileID: 4376052267060895239}
   - component: {fileID: 5494756766785868177}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparkDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13987,7 +13987,7 @@ GameObject:
   - component: {fileID: 8998161636747948422}
   - component: {fileID: 6684799565080906480}
   - component: {fileID: 7794594073857166977}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparksEffect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
