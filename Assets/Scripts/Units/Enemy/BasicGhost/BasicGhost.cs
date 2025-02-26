@@ -94,6 +94,8 @@ public class BasicGhost : Enemy
 
     public override void DropEXP()
     {
-        Instantiate(gemToDrop, transform.position, transform.rotation);
+        gemToDrop = GemPoolManager.Instance.GetGem();
+
+        gemToDrop.transform.position = transform.position;
     }
 }

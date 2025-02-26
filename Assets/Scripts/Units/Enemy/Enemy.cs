@@ -13,8 +13,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected GameObject playerToChase;
 
-    [SerializeField]
-    protected GameObject gemToDrop;
+    protected Gem gemToDrop;
 
     [SerializeField]
     protected float enemyHP;

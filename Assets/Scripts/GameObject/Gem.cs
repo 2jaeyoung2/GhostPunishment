@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GemManager : MonoBehaviour
+public class Gem : MonoBehaviour
 {
     private Animator hoverAnimation;
 
@@ -33,7 +33,7 @@ public class GemManager : MonoBehaviour
             {
                 other.GetComponent<IScoreable>()?.GetExp(experiencePoint);
 
-                Destroy(gameObject);
+                GemPoolManager.Instance.ReturnGem(this);
             }
         }
     }

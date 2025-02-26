@@ -9,8 +9,6 @@ public class EnemyPoolManger : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
 
-    private int typeNum;
-
     private Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
     private void Awake()
