@@ -38511,7 +38511,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 1664
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -38534,6 +38534,7 @@ MonoBehaviour:
   sparkEffect: {fileID: 6964323150601386544}
   explosionEffect: {fileID: 1500002674329729639}
   bomb: {fileID: 5769898423083162198}
+  damage: 0
 --- !u!1 &8833197804129151362
 GameObject:
   m_ObjectHideFlags: 0

@@ -6655,7 +6655,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.08
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0.31, z: 0}
 --- !u!33 &4574596086507216873
 MeshFilter:
@@ -20160,7 +20160,7 @@ GameObject:
   - component: {fileID: 2086292807862501061}
   - component: {fileID: 4388477567114859732}
   m_Layer: 0
-  m_Name: GetGemRange
+  m_Name: GemCollector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

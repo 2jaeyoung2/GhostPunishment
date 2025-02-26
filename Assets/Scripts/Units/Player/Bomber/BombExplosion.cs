@@ -13,6 +13,14 @@ public class BombExplosion : MonoBehaviour
     [SerializeField]
     private MeshRenderer bomb;
 
+    [SerializeField]
+    private float damage;
+
+    private void Start()
+    {
+        damage = 30f;
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,6 +39,16 @@ public class BombExplosion : MonoBehaviour
         explosionEffect.Play();
 
         bomb.enabled = false;
+
+        var damagedEnemies = Physics.OverlapSphere(gameObject.transform.position, 3.5f);
+
+        foreach (var a in damagedEnemies)
+        {
+            if (a.CompareTag("Enemy"))
+            {
+                a.GetComponent<IDamageable>()?.GetDamage(damage);
+            }
+        }
 
         yield return new WaitUntil(() => explosionEffect.IsAlive() == false);
 
