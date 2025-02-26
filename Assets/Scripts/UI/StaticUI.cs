@@ -22,6 +22,12 @@ public class StaticUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI expText;
 
+    [SerializeField]
+    private BombDrop bomb;
+
+    [SerializeField]
+    private Image qCoolTimeIcon;
+
     // TODO: 중앙 상단에 시간
 
     private void Start()
@@ -31,6 +37,8 @@ public class StaticUI : MonoBehaviour
         player.OnHealthChanged += UpdateHealthBar;
 
         player.OnEXPChanged += UpdateExpBar;
+
+        bomb.OnSkillUsed += UpdateCoolTime;
     }
 
     private void UpdateHealthBar(float currentHP, float maxHP)
@@ -59,10 +67,17 @@ public class StaticUI : MonoBehaviour
         }
     }
 
+    private void UpdateCoolTime(float leftTime, float coolTime)
+    {
+        qCoolTimeIcon.fillAmount = leftTime / coolTime;
+    }
+
     private void OnDestroy()
     {
         player.OnHealthChanged -= UpdateHealthBar;
 
         player.OnEXPChanged -= UpdateExpBar;
+
+        bomb.OnSkillUsed -= UpdateCoolTime;
     }
 }

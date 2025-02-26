@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class BombDrop : MonoBehaviour
 {
+    public event Action<float, float> OnSkillUsed;
+
     [SerializeField]
     private GameObject bomb;
 
@@ -26,13 +30,15 @@ public class BombDrop : MonoBehaviour
 
     void Start()
     {      
-        coolTime = 2;
+        coolTime = 15;
 
-        tempCoolTime = coolTime / 2;
+        tempCoolTime = 0;
 
         dropNumber = 10;
 
         ableToDrop = false;
+
+        StartCoroutine(CountCoolTime());
     }
 
     private void Update()
@@ -61,6 +67,8 @@ public class BombDrop : MonoBehaviour
             {
                 StartCoroutine(Drop());
 
+                StartCoroutine(CountCoolTime());
+
                 tempCoolTime = 0;
             }
         }
@@ -76,11 +84,25 @@ public class BombDrop : MonoBehaviour
 
             tempBomb.transform.position = tempTargetPosition + new Vector3(0, 15f, 0);
 
-            Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+            Vector3 randomDir = new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f)).normalized;
 
-            tempBomb.GetComponent<Rigidbody>().AddForce(randomDir * Random.Range(0.5f, 2f), ForceMode.Impulse);
+            tempBomb.GetComponent<Rigidbody>().AddForce(randomDir * UnityEngine.Random.Range(0.5f, 2f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator CountCoolTime()
+    {
+        float countCoolTime = 0;
+
+        while (countCoolTime <= coolTime)
+        {
+            OnSkillUsed?.Invoke(countCoolTime, coolTime);
+
+            yield return null;
+
+            countCoolTime += Time.deltaTime;
         }
     }
 }
