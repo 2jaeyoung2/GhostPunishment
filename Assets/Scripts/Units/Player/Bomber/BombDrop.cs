@@ -9,6 +9,9 @@ public class BombDrop : MonoBehaviour
     private GameObject bomb;
 
     [SerializeField]
+    private GameObject spark;
+
+    [SerializeField]
     private Transform target;
 
     [SerializeField]
@@ -23,11 +26,11 @@ public class BombDrop : MonoBehaviour
 
     void Start()
     {      
-        coolTime = 5f;
+        coolTime = 2;
 
         tempCoolTime = coolTime / 2;
 
-        dropNumber = 5;
+        dropNumber = 10;
 
         ableToDrop = false;
     }
@@ -39,20 +42,27 @@ public class BombDrop : MonoBehaviour
         if (tempCoolTime >= coolTime)
         {
             ableToDrop = true;
+
+            spark.SetActive(true);
         }
         else
         {
             ableToDrop = false;
+
+            spark.SetActive(false);
         }
     }
 
     public void OnActiveBombDrop(InputAction.CallbackContext ctx)
     {
-        if (ableToDrop == true)
+        if (ctx.phase == InputActionPhase.Performed)
         {
-            StartCoroutine(Drop());
+            if (ableToDrop == true)
+            {
+                StartCoroutine(Drop());
 
-            tempCoolTime = 0;
+                tempCoolTime = 0;
+            }
         }
     }
 
@@ -68,7 +78,7 @@ public class BombDrop : MonoBehaviour
 
             Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
 
-            tempBomb.GetComponent<Rigidbody>().AddForce(randomDir * 1f, ForceMode.Impulse);
+            tempBomb.GetComponent<Rigidbody>().AddForce(randomDir * Random.Range(0.5f, 2f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(0.2f);
         }
