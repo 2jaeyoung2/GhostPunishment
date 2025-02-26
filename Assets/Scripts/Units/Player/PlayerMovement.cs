@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
     public void OnMove(InputAction.CallbackContext ctx)
     {
         if (ctx.phase == InputActionPhase.Performed)

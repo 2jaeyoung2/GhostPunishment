@@ -10,7 +10,7 @@ public class Gem : MonoBehaviour
 
     private float experiencePoint = 1.5f;
 
-    private float moveSpeed = 3f;
+    private float moveSpeed = 5f;
 
     private int playerLayer;
 
