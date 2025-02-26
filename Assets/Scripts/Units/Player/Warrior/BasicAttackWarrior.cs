@@ -8,7 +8,9 @@ public class BasicAttackWarrior : MonoBehaviour
     private GameObject sword;
 
     [SerializeField]
-    private float cooltime;
+    private float coolTime;
+
+    private float tempCoolTime;
 
     private float rotateSpeed;
 
@@ -18,7 +20,9 @@ public class BasicAttackWarrior : MonoBehaviour
 
     void Start()
     {
-        cooltime = 3f;
+        coolTime = 3f;
+
+        tempCoolTime = coolTime / 2;
 
         rotateSpeed = 720f;
 
@@ -29,13 +33,13 @@ public class BasicAttackWarrior : MonoBehaviour
 
     void Update()
     {
-        cooltime -= Time.deltaTime;
+        tempCoolTime -= Time.deltaTime;
 
-        if (cooltime <= 0)
+        if (tempCoolTime <= 0)
         {
             SweepSword();
 
-            cooltime = 2f;
+            tempCoolTime = coolTime;
         }
     }
 

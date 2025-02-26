@@ -12,7 +12,7 @@ public class BasicGhost : Enemy
     private GameObject basicGhostProjectile;
 
     [SerializeField]
-    private float cooltime;
+    private float coolTime;
 
     private float tempCoolTime;
 
@@ -27,7 +27,7 @@ public class BasicGhost : Enemy
 
         MoveSpeed = 0.8f;
 
-        cooltime = 2.6f;
+        coolTime = 2.6f;
 
         tempCoolTime = 0.5f;
 
@@ -81,7 +81,7 @@ public class BasicGhost : Enemy
         {
             Instantiate(basicGhostProjectile, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
 
-            tempCoolTime = cooltime;
+            tempCoolTime = coolTime;
         }
     }
 

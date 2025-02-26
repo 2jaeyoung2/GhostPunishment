@@ -10,32 +10,40 @@ public class ShieldThrow : MonoBehaviour
     [SerializeField]
     private GameObject shield;
 
+    private GameObject tempShield;
+
     [SerializeField]
-    private float cooltime;
+    private float coolTime;
 
     private float tempCooltime;
 
     private void Start()
     {
-        cooltime = 6f;
+        coolTime = 6f;
 
         tempCooltime = 3f;
+
+        tempShield = Instantiate(shield, transform.position + new Vector3(0, 0.2f, 0.3f), transform.rotation);
+
+        tempShield.SetActive(false);
     }
 
     private void Update()
     {
-        tempCooltime -= Time.deltaTime;
+        tempCooltime += Time.deltaTime;
 
-        if (tempCooltime <= 0)
+        if (tempCooltime >= coolTime)
         {
             ThrowShield();
 
-            tempCooltime = cooltime;
+            tempCooltime = 0;
         }
     }
 
     void ThrowShield()
     {
-        Instantiate(shield, transform.position + new Vector3(0, 0.2f, 0.3f), transform.rotation);
+        tempShield.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0.3f);
+
+        tempShield.SetActive(true);
     }
 }
