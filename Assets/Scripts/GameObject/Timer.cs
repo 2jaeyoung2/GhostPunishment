@@ -14,6 +14,8 @@ public class Timer : MonoBehaviour
 
     private float currentTime;
 
+    [SerializeField]
+    [Range(1f, 10f)]
     private float timeSpeed;
 
     public bool isEnd;
@@ -22,7 +24,7 @@ public class Timer : MonoBehaviour
     {
         isEnd = false;
 
-        totalTime = 20f;
+        totalTime = 300f;
 
         timeSpeed = 1f;
     }

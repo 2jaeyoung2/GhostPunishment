@@ -47,6 +47,10 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
         {
             Debug.Log("Dead");
 
+            currentHP = 0;
+
+            OnHealthChanged?.Invoke(currentHP, playerMaxHP);
+
             Die();
         }
     }

@@ -51,7 +51,15 @@ public class StaticUI : MonoBehaviour
     {
         healthBar.value = 1;
 
+        bossHPBar.gameObject.SetActive(false);
+
+        bossHPText.gameObject.SetActive(false);
+
+        //// 옵저버 등록
+
         timer.OnTimeChanged += UpdateTime;
+
+        timer.IsTimeEnd += EnableBossHealthBar;
 
         player.OnHealthChanged += UpdateHealthBar;
 
@@ -108,6 +116,13 @@ public class StaticUI : MonoBehaviour
         {
             coolTimeText.text = null;
         }
+    }
+
+    private void EnableBossHealthBar()
+    {
+        bossHPBar.gameObject.SetActive(true);
+
+        bossHPText.gameObject.SetActive(true);
     }
 
     private void UpdateBossHealthBar(float bossCurrentHP, float totalHP)

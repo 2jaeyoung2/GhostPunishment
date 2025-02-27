@@ -14,6 +14,9 @@ public class Boss : Enemy
 
     public event Action<Phase> OnPhaseChanged;
 
+    [SerializeField]
+    private Timer timer;
+
     Phase bossPhase;
 
     protected override float EnemyHP { get => base.EnemyHP; set => base.EnemyHP = value; }
@@ -26,11 +29,15 @@ public class Boss : Enemy
 
     protected override void Start()
     {
-        EnemyHP = 300f;
+        timer.IsTimeEnd += EnableBoss;
+
+        gameObject.SetActive(false);
+
+        EnemyHP = 2700f;
 
         bossCurrentHP = EnemyHP;
 
-        MoveSpeed = 0.3f;
+        MoveSpeed = 0.6f;
 
         enemyState = EnemyState.Follow;
     }
@@ -67,6 +74,11 @@ public class Boss : Enemy
         {
             enemyState = EnemyState.Follow;
         }
+    }
+
+    private void EnableBoss()
+    {
+        gameObject.SetActive(true);
     }
 
     public override void GetDamage(float damage)
