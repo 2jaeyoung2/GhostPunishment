@@ -92,6 +92,10 @@ public class Boss : Enemy
 
         if (bossCurrentHP <= 0)
         {
+            bossCurrentHP = 0;
+
+            OnHealthChanged?.Invoke(bossCurrentHP, EnemyHP);
+
             Die();
         }
     }

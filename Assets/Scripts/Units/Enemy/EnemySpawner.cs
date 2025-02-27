@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
+    private Timer timer;
+
+    [SerializeField]
     private Transform placeToSpawnEnemy;
 
     private int numberToSpawn;
@@ -20,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
         coolTimeToSpawn = 3f;
 
         tempCoolTime = 1.5f;
+
+        timer.IsTimeEnd += StopSpwaning;
     }
 
     void Update()
@@ -39,10 +44,15 @@ public class EnemySpawner : MonoBehaviour
 
             tempCoolTime = coolTimeToSpawn;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            gameObject.SetActive(false);
-        }
+    private void StopSpwaning()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        timer.IsTimeEnd -= StopSpwaning;
     }
 }

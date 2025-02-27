@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
 {
     public event Action<float, float> OnTimeChanged;
 
+    public event Action IsTimeEnd;
+
     private float totalTime;
 
     private float currentTime;
@@ -20,7 +22,7 @@ public class Timer : MonoBehaviour
     {
         isEnd = false;
 
-        totalTime = 180f;
+        totalTime = 20f;
 
         timeSpeed = 1f;
     }
@@ -41,6 +43,8 @@ public class Timer : MonoBehaviour
             if (currentTime >= totalTime)
             {
                 isEnd = true;
+
+                IsTimeEnd?.Invoke();
 
                 yield break;
             }
