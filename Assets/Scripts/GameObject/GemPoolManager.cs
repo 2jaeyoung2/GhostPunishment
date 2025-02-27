@@ -9,7 +9,7 @@ public class GemPoolManager : MonoBehaviour
     [SerializeField]
     private GameObject gem;
 
-    private Queue<Gem> gemQueue = new Queue<Gem>();
+    private Queue<EXP> gemQueue = new Queue<EXP>();
 
     private void Awake()
     {
@@ -35,9 +35,9 @@ public class GemPoolManager : MonoBehaviour
         }
     }
 
-    private Gem CreateNewGem()
+    private EXP CreateNewGem()
     {
-        var newGem = Instantiate(gem).GetComponent<Gem>();
+        var newGem = Instantiate(gem).GetComponent<EXP>();
 
         newGem.gameObject.SetActive(false);
 
@@ -46,7 +46,7 @@ public class GemPoolManager : MonoBehaviour
         return newGem;
     }
 
-    public Gem GetGem()
+    public EXP GetGem()
     {
         if (Instance.gemQueue.Count > 0)
         {
@@ -70,7 +70,7 @@ public class GemPoolManager : MonoBehaviour
         }
     }
 
-    public void ReturnGem(Gem gem)
+    public void ReturnGem(EXP gem)
     {
         gem.gameObject.SetActive(false);
 

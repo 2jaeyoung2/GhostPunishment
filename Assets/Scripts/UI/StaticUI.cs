@@ -4,9 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEngine.InputSystem.XR.TrackedPoseDriver;
 
 public class StaticUI : MonoBehaviour
 {
+    [SerializeField]
+    private Timer timer;
+
+    [SerializeField]
+    private Slider timeBar;
+
     [SerializeField]
     private Player player;
 
@@ -31,17 +38,36 @@ public class StaticUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI coolTimeText;
 
-    // TODO: 중앙 상단에 시간
+    [SerializeField]
+    private Boss boss;
+
+    [SerializeField]
+    private Slider bossHPBar;
+
+    [SerializeField]
+    private TextMeshProUGUI bossHPText;
 
     private void Start()
     {
         healthBar.value = 1;
-        
+
+        timer.OnTimeChanged += UpdateTime;
+
         player.OnHealthChanged += UpdateHealthBar;
 
         player.OnEXPChanged += UpdateExpBar;
 
         bomb.OnSkillUsed += UpdateCoolTime;
+
+        boss.OnHealthChanged += UpdateBossHealthBar;
+    }
+
+    private void UpdateTime(float currentTime, float totalTime)
+    {
+        if (timeBar != null)
+        {
+            timeBar.value = currentTime / totalTime;
+        }
     }
 
     private void UpdateHealthBar(float currentHP, float maxHP)
@@ -84,12 +110,29 @@ public class StaticUI : MonoBehaviour
         }
     }
 
+    private void UpdateBossHealthBar(float bossCurrentHP, float totalHP)
+    {
+        if (bossHPBar != null)
+        {
+            bossHPBar.value = bossCurrentHP / totalHP;
+        }
+
+        if (bossHPText != null)
+        {
+            bossHPText.text = $"{bossCurrentHP} / {totalHP}";
+        }
+    }
+
     private void OnDestroy()
     {
+        timer.OnTimeChanged -= UpdateTime;
+
         player.OnHealthChanged -= UpdateHealthBar;
 
         player.OnEXPChanged -= UpdateExpBar;
 
         bomb.OnSkillUsed -= UpdateCoolTime;
+
+        boss.OnHealthChanged -= UpdateBossHealthBar;
     }
 }

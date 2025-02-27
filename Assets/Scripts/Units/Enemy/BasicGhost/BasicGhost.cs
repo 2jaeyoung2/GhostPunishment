@@ -11,6 +11,8 @@ public class BasicGhost : Enemy
     [SerializeField]
     private GameObject basicGhostProjectile;
 
+    private GameObject tempHealgem;
+
     [SerializeField]
     private float coolTime;
 
@@ -68,11 +70,6 @@ public class BasicGhost : Enemy
         }
     }
 
-    protected override void Move()
-    {
-        transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
-    }
-
     private void Boo()
     {
         tempCoolTime -= Time.deltaTime;
@@ -87,15 +84,31 @@ public class BasicGhost : Enemy
 
     public override void Die()
     {
-        DropEXP();
+        int whatToDrop = Random.Range(0, 11);
+
+        if (whatToDrop == 0)
+        {
+            DropHEAL();
+        }
+        else
+        {
+            DropEXP();
+        }    
 
         EnemyPoolManger.Instance.ReturnEnemy(this);
     }
 
     public override void DropEXP()
     {
-        gemToDrop = GemPoolManager.Instance.GetGem();
+        expToDrop = GemPoolManager.Instance.GetGem();
 
-        gemToDrop.transform.position = transform.position;
+        expToDrop.transform.position = transform.position;
+    }
+
+    public override void DropHEAL()
+    {
+        tempHealgem = Instantiate(healToDrop, transform.position, Quaternion.LookRotation(Vector3.forward));
+
+        tempHealgem.transform.position = transform.position;
     }
 }
