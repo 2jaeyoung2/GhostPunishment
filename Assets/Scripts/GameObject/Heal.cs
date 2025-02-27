@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Gem : MonoBehaviour
+public class Heal : MonoBehaviour
 {
     private Animator hoverAnimation;
 
-    private float experiencePoint = 1.5f;
+    private float healAmount = 3.5f;
 
     private float moveSpeed = 5f;
 
@@ -31,9 +31,9 @@ public class Gem : MonoBehaviour
 
             if (Physics.CheckSphere(transform.position, 0.08f, playerLayer))
             {
-                other.GetComponent<IExp>()?.GetExp(experiencePoint);
+                other.GetComponent<IHeal>()?.GetHealth(healAmount);
 
-                GemPoolManager.Instance.ReturnGem(this);
+                Destroy(gameObject);
             }
         }
     }

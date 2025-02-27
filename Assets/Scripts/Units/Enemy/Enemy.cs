@@ -13,7 +13,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected GameObject playerToChase;
 
-    protected Gem gemToDrop;
+    protected EXP expToDrop;
+
+    [SerializeField]
+    protected GameObject healToDrop;
 
     [SerializeField]
     protected float enemyHP;
@@ -56,16 +59,21 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected void FixedUpdate()
     {
-        FaceToPlayer(playerToChase);
+        if (playerToChase != null)
+        {
+            FaceToPlayer(playerToChase);
+        }
     }
-
 
     protected void FaceToPlayer(GameObject player)
     {
         transform.LookAt(player.transform.position);
     }
 
-    protected abstract void Move();
+    protected void Move()
+    {
+        transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+    }
 
     public virtual void GetDamage(float damage)
     {
@@ -80,4 +88,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public abstract void Die();
 
     public abstract void DropEXP();
+
+    public abstract void DropHEAL();
 }

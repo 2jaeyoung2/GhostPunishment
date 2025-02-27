@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c566d0315fa3f747b44503a92efaee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healToDrop: {fileID: 5305287723881360808, guid: 30f640e391267f0439a41a49d115c1e8, type: 3}
   enemyHP: 0
   moveSpeed: 0
   basicGhostProjectile: {fileID: 3625389718883163725, guid: 7ead2865b76c709468e3e3acfb89b4b1, type: 3}

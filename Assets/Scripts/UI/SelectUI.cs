@@ -9,7 +9,7 @@ public class SelectUI : MonoBehaviour
 
     private void Start()
     {
-        player.OnLevelChanged += ShowThreeCard;
+        //player.OnLevelChanged += ShowThreeCard;
     }
 
     private void ShowThreeCard()
