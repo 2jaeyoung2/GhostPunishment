@@ -31,7 +31,7 @@ public class Gem : MonoBehaviour
 
             if (Physics.CheckSphere(transform.position, 0.08f, playerLayer))
             {
-                other.GetComponent<IScoreable>()?.GetExp(experiencePoint);
+                other.GetComponent<IExp>()?.GetExp(experiencePoint);
 
                 GemPoolManager.Instance.ReturnGem(this);
             }

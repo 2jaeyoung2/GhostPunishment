@@ -28,6 +28,9 @@ public class StaticUI : MonoBehaviour
     [SerializeField]
     private Image qCoolTimeIcon;
 
+    [SerializeField]
+    private TextMeshProUGUI coolTimeText;
+
     // TODO: 중앙 상단에 시간
 
     private void Start()
@@ -70,6 +73,15 @@ public class StaticUI : MonoBehaviour
     private void UpdateCoolTime(float leftTime, float coolTime)
     {
         qCoolTimeIcon.fillAmount = leftTime / coolTime;
+
+        if (Mathf.Abs(qCoolTimeIcon.fillAmount) < 0.99f)
+        {
+            coolTimeText.text = $"{(int)coolTime - (int)leftTime}";
+        }
+        else
+        {
+            coolTimeText.text = null;
+        }
     }
 
     private void OnDestroy()

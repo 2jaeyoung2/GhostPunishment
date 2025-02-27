@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable, IScoreable
+public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 {
     public event Action<float, float> OnHealthChanged;
 
     public event Action<float, float> OnEXPChanged;
+
+    public event Action OnLevelChanged;
 
     [SerializeField]
     private float playerMaxHP;
@@ -21,7 +24,7 @@ public class Player : MonoBehaviour, IDamageable, IScoreable
 
     void Start()
     {
-        playerMaxHP = 100f;
+        playerMaxHP = 25f;
 
         currentHP = playerMaxHP;
 
@@ -48,13 +51,31 @@ public class Player : MonoBehaviour, IDamageable, IScoreable
         }
     }
 
+    public void GetHealth(float heal)
+    {
+        if (currentHP < playerMaxHP)
+        {
+            currentHP += heal;
+
+            if (currentHP > playerMaxHP)
+            {
+                currentHP = playerMaxHP;
+            }
+        }
+
+        OnHealthChanged?.Invoke(currentHP, playerMaxHP);
+    }
+
     public void GetExp(float exp)
     {
         currentPlayerEXP += exp;
 
+        // 레벨 업
         if (currentPlayerEXP >= RequiredExp(level))
         {
             level++;
+
+            OnLevelChanged?.Invoke();
         }
 
         OnEXPChanged?.Invoke(currentPlayerEXP, RequiredExp(level));
@@ -62,10 +83,10 @@ public class Player : MonoBehaviour, IDamageable, IScoreable
 
     public void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
-    public float RequiredExp(int level)
+    public float RequiredExp(int level) // 현재 레벨에 따른 레벨업 요구 경험치 량
     {
         if (level == 1) return 10f;
 
