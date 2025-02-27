@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
     public event Action<float, float> OnEXPChanged;
 
+    public event Action OnGetHP;
+
     public event Action OnLevelChanged;
 
     [SerializeField]
@@ -68,6 +70,8 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
         }
 
         OnHealthChanged?.Invoke(currentHP, playerMaxHP);
+
+        OnGetHP?.Invoke();
     }
 
     public void GetExp(float exp)
