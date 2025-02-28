@@ -37,7 +37,10 @@ public class BasicGhost : Enemy
         {
             case EnemyState.Follow:
 
-                Move();
+                if (playerToChase != null)
+                {
+                    Move();
+                }
 
                 break;
 

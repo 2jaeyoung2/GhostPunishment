@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class Card : MonoBehaviour
 {
@@ -45,11 +46,11 @@ public class Card : MonoBehaviour
         CardPoolManager.Instance.ReturnCard(this);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<IDamageable>()?.GetDamage(damage);
+            other.GetComponent<IDamageable>()?.GetDamage(damage);
 
             CardPoolManager.Instance.ReturnCard(this);
         }

@@ -28,9 +28,12 @@ public class FollowingCam : MonoBehaviour
 
     void LateUpdate()
     {
-        if (targetToFollow.hasChanged)
+        if (targetToFollow != null)
         {
-            cameraPos.position = targetToFollow.position + (Vector3.up * height) + (Vector3.forward * -distance);
+            if (targetToFollow.hasChanged)
+            {
+                cameraPos.position = targetToFollow.position + (Vector3.up * height) + (Vector3.forward * -distance);
+            }
         }
     }
 }

@@ -23,22 +23,15 @@ public class BullGhost : Enemy
         EnemyHP = 20f;
 
         MoveSpeed = 0.8f;
+
+        playerToChase = GameObject.FindWithTag("Player");
     }
 
     protected override void Update()
     {
-        Move();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        if (playerToChase != null)
         {
-            Instantiate(explosionEffect, transform.position, transform.rotation);
-
-            collision.gameObject.GetComponent<IDamageable>()?.GetDamage(damage);
-
-            Destroy(gameObject);
+            Move();
         }
     }
 
@@ -46,8 +39,23 @@ public class BullGhost : Enemy
     {
         if (other.CompareTag("Player"))
         {
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+
+            other.GetComponent<IDamageable>()?.GetDamage(damage);
+
+            Destroy(gameObject);
+        }
+
+    }
+
+    protected override void Move()
+    {
+        if (Vector3.Distance(transform.position, playerToChase.transform.position) < 4f)
+        {
             MoveSpeed = 5f;
         }
+
+        transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
     }
 
     public override void Die()

@@ -13,6 +13,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected GameObject playerToChase;
 
+    protected Player player;
+
     protected EXP expToDrop;
 
     [SerializeField]
@@ -70,7 +72,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         transform.LookAt(player.transform.position);
     }
 
-    protected void Move()
+    protected virtual void Move()
     {
         transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
     }

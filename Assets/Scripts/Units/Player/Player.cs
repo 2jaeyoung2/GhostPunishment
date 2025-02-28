@@ -14,6 +14,8 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
     public event Action OnLevelChanged;
 
+    public event Action IsDead;
+
     [SerializeField]
     private float playerMaxHP;
 
@@ -91,7 +93,11 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
     public void Die()
     {
-        gameObject.SetActive(false);
+        IsDead?.Invoke();
+
+        //gameObject.SetActive(false);
+
+        Destroy(gameObject);
     }
 
     public float RequiredExp(int level) // 현재 레벨에 따른 레벨업 요구 경험치 량

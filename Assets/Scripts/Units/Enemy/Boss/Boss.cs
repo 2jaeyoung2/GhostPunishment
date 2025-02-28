@@ -60,7 +60,10 @@ public class Boss : Enemy
 
                 OnStateChanged?.Invoke(enemyState);
 
-                Move();
+                if (playerToChase != null)
+                {
+                    Move();
+                }
 
                 break;
 
