@@ -61,6 +61,8 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
     public void GetHealth(float heal)
     {
+        SoundManager.Instance.PlayHealSound();
+
         if (currentHP < playerMaxHP)
         {
             currentHP += heal;
@@ -83,6 +85,8 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
         // ·¹º§ ¾÷
         if (currentPlayerEXP >= RequiredExp(level))
         {
+            SoundManager.Instance.PlayLevelUpSound();
+
             level++;
 
             OnLevelChanged?.Invoke();

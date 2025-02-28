@@ -70,6 +70,8 @@ public class BasicGhost : Enemy
 
     private void Boo()
     {
+        SoundManager.Instance.PlayGhostSound();
+
         tempCoolTime -= Time.deltaTime;
 
         if (tempCoolTime <= 0)

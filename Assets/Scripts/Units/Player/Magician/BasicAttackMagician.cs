@@ -40,6 +40,8 @@ public class BasicAttackMagician : MonoBehaviour
         {
             var card = CardPoolManager.Instance.GetCard();
 
+            SoundManager.Instance.PlayCardThrowingSound();
+
             card.transform.position = gameObject.transform.position + new Vector3(0, 0.2f, 0);
 
             yield return new WaitForSeconds(0.2f);

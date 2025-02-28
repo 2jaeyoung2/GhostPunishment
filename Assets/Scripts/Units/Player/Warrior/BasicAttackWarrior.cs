@@ -39,6 +39,8 @@ public class BasicAttackWarrior : MonoBehaviour
         {
             SweepSword();
 
+            SoundManager.Instance.PlaySwordSweepingSound();
+
             tempCoolTime = coolTime;
         }
     }

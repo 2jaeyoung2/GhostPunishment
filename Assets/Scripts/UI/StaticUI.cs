@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEngine.InputSystem.XR.TrackedPoseDriver;
 
 public class StaticUI : MonoBehaviour
 {
@@ -47,6 +46,9 @@ public class StaticUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI bossHPText;
 
+    [SerializeField]
+    private Button tempButton;
+
     private void Start()
     {
         healthBar.value = 1;
@@ -68,6 +70,9 @@ public class StaticUI : MonoBehaviour
         bomb.OnSkillUsed += UpdateCoolTime;
 
         boss.OnHealthChanged += UpdateBossHealthBar;
+
+
+        tempButton.onClick.AddListener(() => SceneChanger.Instance.ChangeScene("TitleScene"));
     }
 
     private void UpdateTime(float currentTime, float totalTime)
