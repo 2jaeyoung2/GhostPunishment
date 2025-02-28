@@ -41,6 +41,8 @@ public class BullGhost : Enemy
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
 
+            SoundManager.Instance.BullExplodeSound();
+
             other.GetComponent<IDamageable>()?.GetDamage(damage);
 
             Destroy(gameObject);

@@ -38,6 +38,8 @@ public class BombExplosion : MonoBehaviour
 
         explosionEffect.Play();
 
+        SoundManager.Instance.PlayBombExplosionSound();
+
         bomb.enabled = false;
 
         var damagedEnemies = Physics.OverlapSphere(gameObject.transform.position, 3.5f);

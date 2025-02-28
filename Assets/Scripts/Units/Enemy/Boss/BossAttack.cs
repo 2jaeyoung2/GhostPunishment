@@ -39,6 +39,8 @@ public class BossAttack : MonoBehaviour
 
             if (attackType == 0) // 0이면 번개공격
             {
+                SoundManager.Instance.PlayGrowlingSound();
+
                 StartCoroutine(LightningAttack());
             }
         }
@@ -62,6 +64,8 @@ public class BossAttack : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.3f);
+
+            SoundManager.Instance.PlayLightningSound();
 
             tempAttack = Instantiate(lightningAttack, tempSpot.transform.position, tempSpot.transform.rotation);
 
