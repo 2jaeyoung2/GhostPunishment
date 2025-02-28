@@ -46,6 +46,8 @@ public class Boss : Enemy
         MoveSpeed = 0.6f;
 
         enemyState = EnemyState.Follow;
+
+        OnHealthChanged?.Invoke(bossCurrentHP, EnemyHP);
     }
 
     protected override void Update()

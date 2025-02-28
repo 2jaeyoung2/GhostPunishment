@@ -52,7 +52,7 @@ public class BossAttack : MonoBehaviour
 
             float elapsedTime = 0;
 
-            while (elapsedTime < 2.5f)
+            while (elapsedTime < Random.Range(1f, 2.5f))
             {
                 elapsedTime += Time.deltaTime;
 
