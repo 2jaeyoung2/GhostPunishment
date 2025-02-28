@@ -7,7 +7,7 @@ public class EnemyPoolManger : MonoBehaviour
     public static EnemyPoolManger Instance;
 
     [SerializeField]
-    private GameObject enemy;
+    private GameObject[] enemy;
 
     private Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
@@ -37,7 +37,7 @@ public class EnemyPoolManger : MonoBehaviour
 
     private Enemy CreateNewEnemy()
     {
-        var newEnemy = Instantiate(enemy).GetComponent<Enemy>();
+        var newEnemy = Instantiate(enemy[Random.Range(0, 2)]).GetComponent<Enemy>();
 
         newEnemy.gameObject.SetActive(false);
 

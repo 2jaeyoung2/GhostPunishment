@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SelectUI : MonoBehaviour
 {
-    [SerializeField]
-    private Player player;
 
     private void Start()
     {

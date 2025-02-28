@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.CullingGroup;
 
 public enum Phase
 {
@@ -11,6 +12,8 @@ public enum Phase
 public class Boss : Enemy
 {
     public event Action<float, float> OnHealthChanged;
+
+    public event Action<EnemyState> OnStateChanged;
 
     public event Action<Phase> OnPhaseChanged;
 
@@ -25,11 +28,14 @@ public class Boss : Enemy
 
     private float bossCurrentHP;
 
-    private GameObject tempHealgem;
+    [SerializeField]
+    private GameObject portal;
+
+    private float elapsedTime = 0;
 
     protected override void Start()
     {
-        timer.IsTimeEnd += EnableBoss;
+        timer.IsTimeEnd += SetBoss;
 
         gameObject.SetActive(false);
 
@@ -44,9 +50,13 @@ public class Boss : Enemy
 
     protected override void Update()
     {
+        elapsedTime += Time.deltaTime;
+
         switch (enemyState)
         {
             case EnemyState.Follow:
+
+                OnStateChanged?.Invoke(enemyState);
 
                 Move();
 
@@ -54,7 +64,12 @@ public class Boss : Enemy
 
             case EnemyState.Attack:
 
-                // TODO: 공격 로직
+                if (elapsedTime > 3.2f) // 3.2 초마다 공격
+                {
+                    OnStateChanged?.Invoke(enemyState);
+
+                    elapsedTime = 0;
+                }
 
                 break;
         }
@@ -76,7 +91,7 @@ public class Boss : Enemy
         }
     }
 
-    private void EnableBoss()
+    private void SetBoss()
     {
         gameObject.SetActive(true);
     }
@@ -85,6 +100,7 @@ public class Boss : Enemy
     {
         bossCurrentHP -= damage;
 
+        // 데미지 입을 때 마다 페이즈 체크
         if (EnemyHP * (2f / 3f) > bossCurrentHP && bossCurrentHP >= EnemyHP / 3f)
         {
             bossPhase = Phase.Pink;
@@ -100,7 +116,7 @@ public class Boss : Enemy
 
         OnHealthChanged?.Invoke(bossCurrentHP, EnemyHP);
 
-        OnPhaseChanged?.Invoke(bossPhase);
+        OnPhaseChanged?.Invoke(bossPhase); // 체크한 페이즈 보내주기
 
         if (bossCurrentHP <= 0)
         {
@@ -114,10 +130,6 @@ public class Boss : Enemy
 
     public override void Die()
     {
-        DropHEAL();
-
-        DropEXP();
-
         StartCoroutine(GoToHell());
     }
 
@@ -125,35 +137,37 @@ public class Boss : Enemy
     {
         CapsuleCollider colliderToDel = gameObject.GetComponent<CapsuleCollider>();
 
-        Destroy(colliderToDel);
+        Destroy(colliderToDel); // 바닥 아래로 내려가도록 콜라이더 삭제
 
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
-        rb.useGravity = false;
+        rb.useGravity = false; // 중력 작용 안하도록 중력 끄기
 
-        playerToChase = null;
+        playerToChase = null; // 플레이어 바라보기 중지
+
+        //포탈 생성
+        portal = Instantiate(portal, new Vector3(transform.position.x, 0.2f, transform.position.z), Quaternion.Euler(90, 0, 0));
 
         while (gameObject.transform.position.y > -2.7f)
         {
+            // 바닥으로 서서히 사라지도록
             gameObject.transform.Translate(Vector3.down * MoveSpeed * Time.deltaTime);
 
             yield return null;
         }
 
-        Destroy(gameObject);
+        Destroy(portal);
+
+        gameObject.SetActive(false);
     }
 
     public override void DropEXP()
     {
-        expToDrop = GemPoolManager.Instance.GetGem();
 
-        expToDrop.transform.position = transform.position;
     }
 
     public override void DropHEAL()
     {
-        tempHealgem = Instantiate(healToDrop, transform.position, Quaternion.LookRotation(Vector3.forward));
 
-        tempHealgem.transform.position = transform.position;
     }
 }

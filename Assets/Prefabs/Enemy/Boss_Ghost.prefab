@@ -81,6 +81,8 @@ MonoBehaviour:
   healToDrop: {fileID: 5305287723881360808, guid: 30f640e391267f0439a41a49d115c1e8, type: 3}
   enemyHP: 0
   moveSpeed: 0
+  timer: {fileID: 0}
+  portal: {fileID: 3241739946798935527, guid: ed84bc4139c6e4b4a9c730a03ab1a21f, type: 3}
 --- !u!54 &4536721904821304377
 Rigidbody:
   m_ObjectHideFlags: 0

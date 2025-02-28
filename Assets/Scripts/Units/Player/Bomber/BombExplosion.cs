@@ -52,6 +52,6 @@ public class BombExplosion : MonoBehaviour
 
         yield return new WaitUntil(() => explosionEffect.IsAlive() == false);
 
-        Destroy(gameObject); // TODO: Return으로 바꾸고 bomb.enabled를 true로 바꿔줘야 함.
+        Destroy(gameObject); // TODO: 옵젝풀 할 때 Return으로 바꾸고 bomb.enabled를 true로 바꿔줘야 함.
     }
 }

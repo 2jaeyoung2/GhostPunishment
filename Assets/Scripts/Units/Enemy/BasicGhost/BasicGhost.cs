@@ -17,12 +17,7 @@ public class BasicGhost : Enemy
     private float coolTime;
 
     private float tempCoolTime;
-
-    private void OnDrawGizmos() // Gizmos
-    {
-        Gizmos.DrawWireSphere(transform.position, 1.5f);
-    }
-
+     
     protected override void Start()
     {
         EnemyHP = 30f;

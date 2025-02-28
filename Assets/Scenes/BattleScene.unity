@@ -1835,7 +1835,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c675e3824085d428ecd49f264b671b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 2588828022110835162, guid: ca782a709af666344b496a0730876544, type: 3}
+  enemy:
+  - {fileID: 2588828022110835162, guid: ca782a709af666344b496a0730876544, type: 3}
+  - {fileID: 1087357099780761942, guid: d8009820d7a0c6644b7586ec48953837, type: 3}
 --- !u!4 &1017192720
 Transform:
   m_ObjectHideFlags: 0
@@ -4586,7 +4588,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -7849,6 +7851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 794626941367986758}
   - component: {fileID: 7031665155836229365}
+  - component: {fileID: 7031665155836229366}
   - component: {fileID: 4114056822376451115}
   - component: {fileID: 773648940050226069}
   m_Layer: 10
@@ -17014,6 +17017,23 @@ MonoBehaviour:
   enemyHP: 0
   moveSpeed: 0
   timer: {fileID: 786988376}
+  portal: {fileID: 3241739946798935527, guid: ed84bc4139c6e4b4a9c730a03ab1a21f, type: 3}
+--- !u!114 &7031665155836229366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839685721768278869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f8ee8411b7aca4b8dd61fadca01830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8939822052502086158}
+  boss: {fileID: 7031665155836229365}
+  lightningSpot: {fileID: 4350818959387751807, guid: db2d3cc41e99bd845b87cc8a0b5fc2c6, type: 3}
+  lightningAttack: {fileID: 8813587839866347586, guid: c50f9e2c685970e4c8ebcd5fc8c7b3e4, type: 3}
 --- !u!1 &7070468395381269852
 GameObject:
   m_ObjectHideFlags: 0
