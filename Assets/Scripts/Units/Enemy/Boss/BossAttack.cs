@@ -35,13 +35,16 @@ public class BossAttack : MonoBehaviour
         {
             OnAttack = true;
 
-            int attackType = Random.Range(0, 1);
+            int attackType = Random.Range(0, 1); // 패턴이 여러개면 숫자 늘리면 됨
 
             if (attackType == 0) // 0이면 번개공격
             {
-                SoundManager.Instance.PlayGrowlingSound();
+                if (player != null)
+                {
+                    SoundManager.Instance.PlayGrowlingSound();
 
-                StartCoroutine(LightningAttack());
+                    StartCoroutine(LightningAttack());
+                }
             }
         }
     }

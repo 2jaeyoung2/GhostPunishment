@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CardPoolManager : MonoBehaviour
 {
@@ -29,6 +30,24 @@ public class CardPoolManager : MonoBehaviour
         }
 
         Initialize(18);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "TitleScene")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Initialize(int size)
@@ -80,6 +99,8 @@ public class CardPoolManager : MonoBehaviour
 
     public void ReturnCard(Card card)
     {
+        if (Instance == null) return;
+
         card.gameObject.SetActive(false);
 
         card.transform.SetParent(Instance.transform);

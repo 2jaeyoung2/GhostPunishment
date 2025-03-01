@@ -15,10 +15,12 @@ public class BullGhost : Enemy
     private GameObject explosionEffect;
 
     private GameObject tempHealgem;
+    
+    private EnemyState state;
 
     protected override void Start()
     {
-        damage = 3f;
+        damage = 1f;
 
         EnemyHP = 20f;
 
@@ -45,7 +47,7 @@ public class BullGhost : Enemy
 
             other.GetComponent<IDamageable>()?.GetDamage(damage);
 
-            Destroy(gameObject);
+            EnemyPoolManger.Instance.ReturnEnemy(this);
         }
 
     }
@@ -54,7 +56,7 @@ public class BullGhost : Enemy
     {
         if (Vector3.Distance(transform.position, playerToChase.transform.position) < 4f)
         {
-            MoveSpeed = 5f;
+            MoveSpeed = 4f;
         }
 
         transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
@@ -73,7 +75,9 @@ public class BullGhost : Enemy
             DropEXP();
         }
 
-        Destroy(gameObject);
+        this.state = EnemyState.Follow;
+
+        EnemyPoolManger.Instance.ReturnEnemy(this);
     }
 
     public override void DropEXP()

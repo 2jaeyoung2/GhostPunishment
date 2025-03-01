@@ -17,6 +17,8 @@ public class Boss : Enemy
 
     public event Action<Phase> OnPhaseChanged;
 
+    public event Action IsDead;
+
     [SerializeField]
     private Timer timer;
 
@@ -39,7 +41,7 @@ public class Boss : Enemy
 
         gameObject.SetActive(false);
 
-        EnemyHP = 2700f;
+        EnemyHP = 500f;
 
         bossCurrentHP = EnemyHP;
 
@@ -135,6 +137,8 @@ public class Boss : Enemy
 
     public override void Die()
     {
+        IsDead?.Invoke();
+
         StartCoroutine(GoToHell());
     }
 

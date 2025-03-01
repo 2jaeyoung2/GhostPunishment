@@ -102,7 +102,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayGhostSound()
     {
-        audioSource.PlayOneShot(ghostSounds[Random.Range(0, 4)], Random.Range(0.05f, 0.1f));
+        audioSource.PlayOneShot(ghostSounds[Random.Range(0, 4)], Random.Range(0.01f, 0.02f));
     }
 
     public void PlayGrowlingSound()

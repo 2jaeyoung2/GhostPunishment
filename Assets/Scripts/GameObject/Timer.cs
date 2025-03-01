@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
     {
         isEnd = false;
 
-        totalTime = 300f;
+        totalTime = 2f;
 
         timeSpeed = 1f;
     }

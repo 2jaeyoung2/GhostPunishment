@@ -15,11 +15,11 @@ public class BasicAttackMagician : MonoBehaviour
 
     private void Start()
     {
-        coolTime = 3f;
+        coolTime = 2f;
 
         tempCoolTime = coolTime / 2;
 
-        cardNumber = 3;
+        cardNumber = 4;
     }
 
     void Update()
@@ -36,9 +36,11 @@ public class BasicAttackMagician : MonoBehaviour
 
     IEnumerator ThrowCards(int count)
     {
-        for (int i = 0; i < count; i++) 
+        for (int i = 0; i < count; i++)
         {
             var card = CardPoolManager.Instance.GetCard();
+
+            card.GetComponent<Card>().player = gameObject.GetComponent<Player>();
 
             SoundManager.Instance.PlayCardThrowingSound();
 

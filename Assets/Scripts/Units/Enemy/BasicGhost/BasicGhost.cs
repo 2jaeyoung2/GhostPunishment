@@ -17,7 +17,9 @@ public class BasicGhost : Enemy
     private float coolTime;
 
     private float tempCoolTime;
-     
+
+    private EnemyState state;
+
     protected override void Start()
     {
         EnemyHP = 30f;
@@ -45,8 +47,11 @@ public class BasicGhost : Enemy
                 break;
 
             case EnemyState.Attack:
-
-                Boo();
+                
+                if (playerToChase != null)
+                {
+                    Boo();
+                }
 
                 break;
         }
@@ -93,7 +98,9 @@ public class BasicGhost : Enemy
         else
         {
             DropEXP();
-        }    
+        }
+
+        this.state = EnemyState.Follow;
 
         EnemyPoolManger.Instance.ReturnEnemy(this);
     }

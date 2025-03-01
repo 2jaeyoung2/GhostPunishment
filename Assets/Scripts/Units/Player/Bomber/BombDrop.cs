@@ -82,6 +82,8 @@ public class BombDrop : MonoBehaviour
         {
             var tempBomb = Instantiate(bomb);
 
+            tempBomb.GetComponent<BombExplosion>().player = gameObject.GetComponent<Player>();
+
             tempBomb.transform.position = tempTargetPosition + new Vector3(0, 15f, 0);
 
             Vector3 randomDir = new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f)).normalized;

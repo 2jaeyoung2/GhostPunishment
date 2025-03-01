@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class Card : MonoBehaviour
 {
+    public event Action<float> OnDamageChanged;
+
+    public Player player;
+
     [SerializeField]
     [Range(2f, 10f)]
     private float moveSpeed;
@@ -23,6 +28,11 @@ public class Card : MonoBehaviour
         damage = 10f;
 
         duration = 3f;
+    }
+
+    private void Start()
+    {
+        player.OnLevelChanged += IncreaseDamage;
     }
 
     private void OnEnable()
@@ -44,6 +54,13 @@ public class Card : MonoBehaviour
         }
 
         CardPoolManager.Instance.ReturnCard(this);
+    }
+
+    private void IncreaseDamage()
+    {
+        damage *= 1.1f;
+
+        OnDamageChanged?.Invoke(damage);
     }
 
     private void OnTriggerEnter(Collider other)

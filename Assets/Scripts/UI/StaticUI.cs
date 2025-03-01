@@ -46,9 +46,6 @@ public class StaticUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI bossHPText;
 
-    [SerializeField]
-    private Button tempButton;
-
     private void Start()
     {
         healthBar.value = 1;
@@ -70,9 +67,6 @@ public class StaticUI : MonoBehaviour
         bomb.OnSkillUsed += UpdateCoolTime;
 
         boss.OnHealthChanged += UpdateBossHealthBar;
-
-
-        tempButton.onClick.AddListener(() => SceneChanger.Instance.ChangeScene("TitleScene"));
     }
 
     private void UpdateTime(float currentTime, float totalTime)
@@ -92,7 +86,7 @@ public class StaticUI : MonoBehaviour
 
         if (healthText != null)
         {
-            healthText.text = $"{currentHP} / {maxHP}";
+            healthText.text = $"{(int)currentHP} / {(int)maxHP}";
         }
     }
 
@@ -139,7 +133,7 @@ public class StaticUI : MonoBehaviour
 
         if (bossHPText != null)
         {
-            bossHPText.text = $"{bossCurrentHP} / {totalHP}";
+            bossHPText.text = $"{(int)bossCurrentHP} / {totalHP}";
         }
     }
 

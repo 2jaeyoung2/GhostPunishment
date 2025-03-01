@@ -10,11 +10,16 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
     public event Action<float, float> OnEXPChanged;
 
+    public event Action<float> OnMaxHealthChanged;
+
     public event Action OnGetHP;
 
     public event Action OnLevelChanged;
 
     public event Action IsDead;
+
+    [SerializeField]
+    private GameObject gameManager;
 
     [SerializeField]
     private float playerMaxHP;
@@ -28,7 +33,7 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
     void Start()
     {
-        playerMaxHP = 25f;
+        playerMaxHP = 40f;
 
         currentHP = playerMaxHP;
 
@@ -39,6 +44,8 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
         OnHealthChanged?.Invoke(currentHP, playerMaxHP);
 
         OnEXPChanged?.Invoke(currentPlayerEXP, RequiredExp(level));
+
+        OnLevelChanged += IncreaseHP;
     }
 
     public void GetDamage(float damage)
@@ -57,6 +64,13 @@ public class Player : MonoBehaviour, IDamageable, IExp, IHeal
 
             Die();
         }
+    }
+
+    private void IncreaseHP()
+    {
+        playerMaxHP += 15f;
+
+        OnMaxHealthChanged?.Invoke(playerMaxHP);
     }
 
     public void GetHealth(float heal)

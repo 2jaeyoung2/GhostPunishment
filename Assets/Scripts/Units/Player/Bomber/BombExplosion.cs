@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BombExplosion : MonoBehaviour
 {
+    public event Action<float> OnDamageChanged;
+
+    public Player player;
+
     [SerializeField]
     private ParticleSystem sparkEffect;
 
@@ -18,9 +23,10 @@ public class BombExplosion : MonoBehaviour
 
     private void Start()
     {
+        player.OnLevelChanged += IncreaseDamage;
+
         damage = 30f;
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -28,6 +34,13 @@ public class BombExplosion : MonoBehaviour
         {
             StartCoroutine(Explosion());
         }
+    }
+
+    private void IncreaseDamage()
+    {
+        damage *= 1.1f;
+
+        OnDamageChanged?.Invoke(damage);
     }
 
     IEnumerator Explosion()

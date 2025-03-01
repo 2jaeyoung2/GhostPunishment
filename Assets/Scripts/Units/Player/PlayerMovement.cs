@@ -15,6 +15,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 tempPosition;
 
+    [SerializeField]
+    private Animator warriorAnim;
+
+    [SerializeField]
+    private Animator magicianAnim;
+
+    [SerializeField]
+    private Animator bomberAnim;
+
     private void Start()
     {
         moveSpeed = 3f;
@@ -24,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveDir != Vector3.zero) // 키 입력이 있으면 실행.
         {
+            warriorAnim.SetBool("isMoving", true);
+
+            magicianAnim.SetBool("isMoving", true);
+
+            bomberAnim.SetBool("isMoving", true);
+
             // TODO: 끊기는거 수정
             if (gameObject.transform.position.x <= 10 && gameObject.transform.position.x >= -10 && gameObject.transform.position.z <= 10 && gameObject.transform.position.z >= -10)
             {
@@ -37,6 +52,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 gameObject.transform.position = tempPosition;
             }
+        }
+        else
+        {
+            warriorAnim.SetBool("isMoving", false);
+
+            magicianAnim.SetBool("isMoving", false);
+
+            bomberAnim.SetBool("isMoving", false);
         }
     }
 
@@ -53,13 +76,7 @@ public class PlayerMovement : MonoBehaviour
             moveDir = Vector3.zero;
 
             rb.velocity = Vector3.zero;
+
         }
     }
-
-    //void OnMove(InputValue inputValue) // 키보드랑 바인딩 된 함수
-    //{
-    //    Vector2 direction = inputValue.Get<Vector2>();
-    //    moveDir = new Vector3(direction.x, 0, direction.y);
-    //    Debug.Log("Move Direction: " + moveDir);
-    //}
 }

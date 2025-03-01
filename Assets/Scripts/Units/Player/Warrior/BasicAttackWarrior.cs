@@ -20,13 +20,15 @@ public class BasicAttackWarrior : MonoBehaviour
 
     void Start()
     {
-        coolTime = 3f;
+        coolTime = 1.5f;
 
         tempCoolTime = coolTime / 2;
 
         rotateSpeed = 720f;
 
         tempSword = Instantiate(sword, transform.position + new Vector3(0, 0.2f, 0), transform.rotation);
+
+        tempSword.GetComponentInChildren<SwordManager>().player = gameObject.GetComponent<Player>();
 
         tempSword.SetActive(false);
     }
